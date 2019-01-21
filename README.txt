@@ -1,1 +1,1 @@
-Simply python web scraper done as a learning exercise, does what it says on the tin.
+Simple python web scraper done as a learning exercise, does what it says on the tin.

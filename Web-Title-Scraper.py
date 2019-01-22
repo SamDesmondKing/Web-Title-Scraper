@@ -4,14 +4,19 @@ import re
 
 #HTML tag removal function
 def remove_html_tags(text):
-    clean = re.compile('<.*?>')
-    return re.sub(clean, '', text)
+  clean = re.compile('<.*?>')
+  return re.sub(clean, '', text)
 
-#Taking URL as input
-URL = input("Enter the URL here: ")
+#Input taking and validation
+res = None
+while res is None:
+  URL = input("Enter the URL here: ")
+  try:
+    res = requests.get(URL.strip())
+  except:
+    print("Error: Not a valid URL.")
 
-#Passing URL to requests, then BeautifulSoup, left with title as list.
-res = requests.get(URL.strip())
+#Passing requests object to Beautiful Soup, getting title as list
 soup = bs4.BeautifulSoup(res.text, 'lxml')
 title_list = soup.select('title')
 
